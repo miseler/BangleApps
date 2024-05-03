@@ -61,7 +61,7 @@
       const minutes = Math.floor(((next-1) % 3600000) / 60000).toString();
       const seconds = Math.floor(((next-1) % 60000) / 1000).toString();
       drawSeconds = (config.showSeconds & 0b01 && !Bangle.isLocked()) || (config.showSeconds & 0b10 && next <= 1000*60);
-      if(awaysOn && next==1) drawSeconds = false;
+      if(alwaysOn && next==1) drawSeconds = false;
 
       g.reset(); // reset the graphics context to defaults (color/font/etc)
       g.setFontAlign(-1,0); // center font in y direction
