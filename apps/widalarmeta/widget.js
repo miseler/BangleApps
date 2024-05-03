@@ -38,20 +38,20 @@
   } // getNextAlarm
 
   function draw(_w, fromInterval) {
+    let alwaysOn = true;
     if (this.nextAlarm === undefined) {
       let alarm = getNextAlarm();
-      /*
-      if (alarm === undefined) {
+      if (alarm === undefined && !alwaysOn) {
         // try again with next hour
         const nextHour = new Date();
         nextHour.setHours(nextHour.getHours()+1);
         alarm = getNextAlarm(nextHour);
-      }*/
+      }
       if (alarm !== undefined) {
         this.nextAlarm = alarm;
       }
     }
-    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm) : 1;
+    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm) : alwaysOn;
 
     let calcWidth = 0;
     let drawSeconds = false;
@@ -61,6 +61,7 @@
       const minutes = Math.floor(((next-1) % 3600000) / 60000).toString();
       const seconds = Math.floor(((next-1) % 60000) / 1000).toString();
       drawSeconds = (config.showSeconds & 0b01 && !Bangle.isLocked()) || (config.showSeconds & 0b10 && next <= 1000*60);
+      if(awaysOn && next==1) drawSeconds = false;
 
       g.reset(); // reset the graphics context to defaults (color/font/etc)
       g.setFontAlign(-1,0); // center font in y direction
