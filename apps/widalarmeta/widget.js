@@ -40,17 +40,18 @@
   function draw(_w, fromInterval) {
     if (this.nextAlarm === undefined) {
       let alarm = getNextAlarm();
+      /*
       if (alarm === undefined) {
         // try again with next hour
         const nextHour = new Date();
         nextHour.setHours(nextHour.getHours()+1);
         alarm = getNextAlarm(nextHour);
-      }
+      }*/
       if (alarm !== undefined) {
         this.nextAlarm = alarm;
       }
     }
-    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm) : 0;
+    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm) : 1;
 
     let calcWidth = 0;
     let drawSeconds = false;
