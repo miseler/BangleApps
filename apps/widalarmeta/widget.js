@@ -39,7 +39,7 @@
 
   function draw(_w, fromInterval) {
 
-    let alwaysOn = false;
+    let alwaysOn = true;
 
     if (this.nextAlarm === undefined) {
       let alarm = getNextAlarm();
