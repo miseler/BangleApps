@@ -38,7 +38,9 @@
   } // getNextAlarm
 
   function draw(_w, fromInterval) {
-    let alwaysOn = true;
+
+    let alwaysOn = false;
+
     if (this.nextAlarm === undefined) {
       let alarm = getNextAlarm();
       if (alarm === undefined && !alwaysOn) {
