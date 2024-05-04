@@ -112,6 +112,7 @@
     if (timeout === 0) {
       timeout += period;
     }
+    if(alwaysOn && next==1) timeout = 3600000;
 
     if (this.timeoutId !== undefined) {
       clearTimeout(this.timeoutId);
