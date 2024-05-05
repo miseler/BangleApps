@@ -474,7 +474,7 @@
       }
     }
   };
-  Bangle.on('touch', onTouch);
+  //Bangle.on('touch', onTouch);
 
   //Set up swipe handler
   let onSwipe = function (lr, ud) {
