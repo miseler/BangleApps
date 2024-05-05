@@ -351,7 +351,7 @@
         let string = getWeatherString();
         g.clearRect(0, SECONDS_TOP, g.getWidth(), SECONDS_TOP + DIGIT_HEIGHT)
           //.setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
-          .setFont('Vector', 18)
+          .setFont('Vector', 17)
           .drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
       }
 
