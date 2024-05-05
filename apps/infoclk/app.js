@@ -347,7 +347,8 @@
       }
       // Otherwise, use the seconds area
       else {
-        let string = getDayString(now) + ' ' + getDateString(now);
+        //let string = getDayString(now) + ' ' + getDateString(now);
+        let string = getWeatherString();
         g.clearRect(0, SECONDS_TOP, g.getWidth(), SECONDS_TOP + DIGIT_HEIGHT)
           .setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
           .drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
