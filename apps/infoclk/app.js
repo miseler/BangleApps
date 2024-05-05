@@ -70,7 +70,7 @@
   // Get a Gadgetbridge weather string
   let getWeatherString = function () {
     let current = weather.get();
-    if (current) return locale.temp(current.temp - 273.15) + ', ' + current.txt;
+    if (current) return locale.temp(current.temp - 273.15) + ' ' + current.txt;
     else return 'Weather unknown!';
   }
 
