@@ -35,7 +35,7 @@
   // Determine the font size needed to fit a string of the given length widthin maxWidth number of pixels, clamped between minSize and maxSize
   let getFontSize = function (length, maxWidth, minSize, maxSize) {
     let size = Math.floor(maxWidth / length);  //Number of pixels of width available to character
-    size *= (20 / 12);  //Convert to height, assuming 20 pixels of height for every 12 of width
+    size *= (16 / 12);  //Convert to height, assuming 20 pixels of height for every 12 of width
 
     // Clamp to within range
     if (size < minSize) return minSize;
