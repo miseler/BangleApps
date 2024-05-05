@@ -510,10 +510,10 @@
     }
   });
 
+  drawLockedSeconds(true);
+
   // Load widgets
   Bangle.loadWidgets();
   Bangle.drawWidgets();
-
-  drawLockedSeconds(true);
 
 }
