@@ -77,7 +77,7 @@
   // Get a second weather row showing humidity, wind speed, and wind direction
   let getWeatherRow2 = function () {
     let current = weather.get();
-    if (current) return `${current.hum}%, ${locale.speed(current.wind)} ${current.wrose}`;
+    if (current) return `${current.rain}%, ${locale.speed(current.wind)} ${current.wrose}`;
     else return 'Check Gadgetbridge';
   }
 
