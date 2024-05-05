@@ -304,6 +304,8 @@
       else if (config.bottomLocked.display == 'health') bottomString = getHealthString();
       else bottomString = ' ';
 
+      bottomString = getWeatherRow2();
+
       g.reset()
         .setFontAlign(0, 0)
         .setFont('Vector', getFontSize(bottomString.length, 176, 6, g.getHeight() - (SECONDS_TOP + DIGIT_HEIGHT + 3)))
