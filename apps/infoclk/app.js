@@ -466,15 +466,15 @@
       else y -= 2;
 
       if (y < 0) {
-        Bangle.buzz();
-        Bangle.showLauncher();
+        //Bangle.buzz();
+        //Bangle.showLauncher();
       } else {
         let i = 4 * y + x;
         launch(config.shortcuts[i], config.fastLoad.shortcuts[i]);
       }
     }
   };
-  //Bangle.on('touch', onTouch);
+  Bangle.on('touch', onTouch);
 
   //Set up swipe handler
   let onSwipe = function (lr, ud) {
