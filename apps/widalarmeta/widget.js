@@ -13,7 +13,7 @@
       if (config.font == 0) {
         //require("Font5x9Numeric7Seg").add(Graphics);
         //require("Font6x12").add(Graphics);
-        require("FontCherry6x10").add(Graphics);
+        require("FontDylex7x13").add(Graphics);
         //require("Font5x7Numeric7Seg").add(Graphics);
       } else if (config.font == 1) {
         require("Font7x11Numeric7Seg").add(Graphics);
@@ -85,7 +85,7 @@
       if (config.font == 0) {
         //g.setFont("5x9Numeric7Seg:1x2");
         //g.setFont("6x12:2x2");
-        g.setFont("Cherry6x10");
+        g.setFont("Dylex7x13");
         //g.setFont("5x7Numeric7Seg:2x3");
       } else if (config.font == 1) {
         g.setFont("7x11Numeric7Seg:1x2");
