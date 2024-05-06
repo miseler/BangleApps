@@ -84,7 +84,7 @@
       }
       if (config.font == 0) {
         //g.setFont("5x9Numeric7Seg:1x2");
-        g.setFont("6x12:2");
+        g.setFont("6x12:2x2");
         //g.setFont("4x8Numeric:2x3");
         //g.setFont("5x7Numeric7Seg:2x3");
       } else if (config.font == 1) {
