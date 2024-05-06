@@ -11,7 +11,7 @@
     }, require("Storage").readJSON("widalarmeta.json",1) || {});
 
       if (config.font == 0) {
-        require("Font7x11Numeric7Seg").add(Graphics);
+        require("FontVGA16").add(Graphics);
       } else if (config.font == 1) {
         require("Font7x11Numeric7Seg").add(Graphics);
       }
@@ -80,7 +80,7 @@
         text += ":" + seconds.padStart(2, '0');
       }
       if (config.font == 0) {
-        g.setFont("7x11Numeric7Seg:1x2");
+        g.setFont("FontVGA16");
       } else if (config.font == 1) {
         g.setFont("7x11Numeric7Seg:1x2");
       } else {
