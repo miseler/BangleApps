@@ -353,7 +353,7 @@
         let string = getWeatherString();
         g.clearRect(0, SECONDS_TOP, g.getWidth(), SECONDS_TOP + DIGIT_HEIGHT)
           //.setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
-          .setFont('Vector', 17)
+          .setFont('Vector', 16)
           .drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
       }
 
@@ -512,10 +512,10 @@
     }
   });
 
-  drawLockedSeconds(true);
-
   // Load widgets
   Bangle.loadWidgets();
   Bangle.drawWidgets();
+
+  drawLockedSeconds(true);
 
 }
