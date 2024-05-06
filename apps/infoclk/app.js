@@ -356,7 +356,8 @@
         g.clearRect(0, SECONDS_TOP, g.getWidth(), SECONDS_TOP + DIGIT_HEIGHT)
           //.setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
           //.setFont('6x12:2')
-          .setFont6x15(2)
+          //.setFont6x15(2)
+          .setFont('6x15:1')
           .drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
       }
 
