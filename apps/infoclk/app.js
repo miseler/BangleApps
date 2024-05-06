@@ -1,7 +1,7 @@
 {
   const FONT = require('infoclk-font.js');
-  require("Font6x15").add(Graphics);
-
+  require("HaxorNarrow7x17").add(Graphics);
+  
   const storage = require("Storage");
   const locale = require("locale");
   const weather = require('weather');
@@ -357,8 +357,7 @@
           //.setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
           //.setFont('6x12:2')
           //.setFont6x15(2)
-          .setFont('6x15:2');
-        g.drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
+          .setFont('HaxorNarrow7x17:2').drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
       }
 
       drawBottomText();
