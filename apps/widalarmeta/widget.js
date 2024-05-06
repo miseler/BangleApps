@@ -85,7 +85,7 @@
       if (config.font == 0) {
         //g.setFont("5x9Numeric7Seg:1x2");
         //g.setFont("6x12:2x2");
-        g.setFont("Cherry6x10:2x2");
+        g.setFont("Cherry6x10");
         //g.setFont("5x7Numeric7Seg:2x3");
       } else if (config.font == 1) {
         g.setFont("7x11Numeric7Seg:1x2");
