@@ -1,6 +1,6 @@
 {
   const FONT = require('infoclk-font.js');
-  require("Font8x12").add(Graphics);
+  //require("Font8x12").add(Graphics);
   
   const storage = require("Storage");
   const locale = require("locale");
@@ -351,11 +351,11 @@
       // Otherwise, use the seconds area
       else {
         //let string = getDayString(now) + ' ' + getDateString(now);
-        //require("Font6x12").add(Graphics);
+        require("Font8x12").add(Graphics);
         let string = getWeatherString();
         g.clearRect(0, SECONDS_TOP, g.getWidth(), SECONDS_TOP + DIGIT_HEIGHT)
           //.setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
-          .setFont('8x12:2')
+          .setFont('8x12')
           //.setFont6x15(2)
           //.setFont('HaxorNarrow7x17:1x2')
           .drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
