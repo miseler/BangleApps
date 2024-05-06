@@ -1,6 +1,6 @@
 {
   const FONT = require('infoclk-font.js');
-  require("HaxorNarrow7x17").add(Graphics);
+  require("FontHaxorNarrow7x17").add(Graphics);
   
   const storage = require("Storage");
   const locale = require("locale");
