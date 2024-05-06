@@ -12,7 +12,7 @@
 
       if (config.font == 0) {
         //require("Font5x9Numeric7Seg").add(Graphics);
-        require("Font8x12").add(Graphics);
+        require("Font6x12").add(Graphics);
         //require("Font4x8Numeric").add(Graphics);
         //require("Font5x7Numeric7Seg").add(Graphics);
       } else if (config.font == 1) {
@@ -84,7 +84,7 @@
       }
       if (config.font == 0) {
         //g.setFont("5x9Numeric7Seg:1x2");
-        g.setFont("8x12:1x2");
+        g.setFont("6x12:1x2");
         //g.setFont("4x8Numeric:2x3");
         //g.setFont("5x7Numeric7Seg:2x3");
       } else if (config.font == 1) {
