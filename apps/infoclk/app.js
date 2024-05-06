@@ -351,6 +351,7 @@
       // Otherwise, use the seconds area
       else {
         //let string = getDayString(now) + ' ' + getDateString(now);
+        require("Font6x12").add(Graphics);
         let string = getWeatherString();
         g.clearRect(0, SECONDS_TOP, g.getWidth(), SECONDS_TOP + DIGIT_HEIGHT)
           //.setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
