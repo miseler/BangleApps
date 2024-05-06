@@ -357,7 +357,7 @@
           //.setFont('Vector', getFontSize(string.length, g.getWidth(), 6, DATE_LETTER_HEIGHT))
           //.setFont('6x12:2')
           //.setFont6x15(2)
-          .setFont('HaxorNarrow7x17:2').drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
+          .setFont('HaxorNarrow7x17:1x2').drawString(string, g.getWidth() / 2, DOW_DATE_CENTER_Y);
       }
 
       drawBottomText();
