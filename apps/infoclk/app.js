@@ -1,6 +1,6 @@
 {
   const FONT = require('infoclk-font.js');
-  const FONT2 = require("Font6x12").add(Graphics);
+  require("Font6x15").add(Graphics);
 
   const storage = require("Storage");
   const locale = require("locale");
