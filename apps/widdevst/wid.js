@@ -40,9 +40,9 @@
     else if(borderMode==1) { // battery gauge
       let b = E.getBattery(); b=60;
       let corner = 4;
-      if(b <= 65) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
-      if(b <= 40) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
-      if(b <= 15) {g.drawLine(x+corner, y+22, x+0, y+22);g.drawLine(x+0, y+22-corner, x+0, y+21);}
+      if(b <= 55) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
+      if(b <= 30) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
+      if(b <=  5) {g.drawLine(x+corner, y+22, x+0, y+22);g.drawLine(x+0, y+22-corner, x+0, y+21);}
       setColor(b);
       let top = E.clip(b-75, 0, 25);
       let right = E.clip(b-50, 0, 25);
