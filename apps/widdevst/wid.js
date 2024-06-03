@@ -21,7 +21,7 @@
     if (Bangle.isGPSOn() || toggleForce) g.drawString('G', x + 5, y + 12), again = true;
     if (Bangle.isHRMOn() || toggleForce) g.drawString('H', x + 13, y + 12), again = true;
 
-    if(borderMode==0) { // RAM & storage bars
+    if(borderMode==0 && false) { // RAM & storage bars
       let t;
       if ((d - stat.date) < 6e4) {
         t = process.memory(false);
@@ -37,7 +37,7 @@
       g.setColor(col(stat.sto)); g.drawRect(x + 2, y + 21, x + 2 + stat.sto * 18, y + 22);
       g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
     }
-    else if(borderMode==1) { // battery gauge
+    else if(borderMode==1 || true) { // battery gauge
       let b = E.getBattery(); b=80;
       let corner = 4;
       if(b <= 65) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
