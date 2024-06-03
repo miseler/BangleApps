@@ -19,6 +19,7 @@
         require("Font7x11Numeric7Seg").add(Graphics);
         require("Font4x8Numeric").add(Graphics);
         require("Font5x9Numeric7Seg").add(Graphics);
+        require("FontHaxorNarrow7x17").add(Graphics)
       }
   }
   loadSettings();
@@ -89,6 +90,7 @@
       } else if (config.font == 1) {
         g.setFont("7x11Numeric7Seg:2x2");
         g.setFont("5x9Numeric7Seg:2x2");
+        g.setFont("HaxorNarrow7x17");
       } else {
         // Default to this if no other font is set.
         g.setFont("6x8:1x2");
