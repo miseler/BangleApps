@@ -18,7 +18,7 @@
         require("Font7x11Numeric7Seg").add(Graphics);
         require("Font7x11Numeric7Seg").add(Graphics);
         require("Font4x8Numeric").add(Graphics);
-        
+        require("Font5x9Numeric7Seg").add(Graphics);
       }
   }
   loadSettings();
@@ -88,7 +88,7 @@
         g.setFont("FontTeletext10x18Ascii");
       } else if (config.font == 1) {
         g.setFont("7x11Numeric7Seg:2x2");
-        g.setFont("4x8Numeric:3x3");
+        g.setFont("5x9Numeric7Seg:2x2");
       } else {
         // Default to this if no other font is set.
         g.setFont("6x8:1x2");
