@@ -15,7 +15,7 @@
     g.clearRect(x, y, x + 21, y + 23);
     g.setFont('6x8', 1);
     let again = false;
-    let toggleForce = false;
+    let toggleForce = true;
     if (NRF.getSecurityStatus().connected || toggleForce) g.drawString('B', x + 5, y + 3), again = true;
     if (Bangle.isCompassOn() || toggleForce) g.drawString('C', x + 13, y + 3), again = true;
     if (Bangle.isGPSOn() || toggleForce) g.drawString('G', x + 5, y + 12), again = true;
@@ -43,6 +43,8 @@
       /*/
       const b=40;
       //*/
+
+      /*
       let corner = 4;
       if(b <= 55) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
       if(b <= 30) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
@@ -56,6 +58,21 @@
       if(right>0) g.drawRect(x+20,y+22-22*right/25,x+21,y+22);
       if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
       if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
+      /*/
+      let corner = 4;
+      if(b <= 55) {g.drawLine(x+20-corner, y+0, x+20, y+0);g.drawLine(x+20, y+1, x+20, y+corner);}
+      if(b <= 30) {g.drawLine(x+20-corner, y+22, x+20, y+22);g.drawLine(x+20, y+22-corner, x+20, y+21);}
+      if(b <=  5) {g.drawLine(x+1+corner, y+22, x+1, y+22);g.drawLine(x+1, y+22-corner, x+1, y+21);}
+      //setColor(b);
+      let top = E.clip(b-75, 0, 25);
+      let right = E.clip(b-50, 0, 25);
+      let bottom = E.clip(b-25, 0, 25);
+      let left = E.clip(b, 0, 25);
+      if(top>0) g.drawRect(x+20-18*top/25,y+0,x+20,y+0);
+      if(right>0) g.drawRect(x+20,y+22-21*right/25,x+20,y+22);
+      if(bottom>0) g.drawRect(x+1,y+22,x+1+18*bottom/25,y+22);
+      if(left>0) g.drawRect(x+1,y+0,x+1,y+21*left/25);
+      //*/
     }
 
     // if there's nothing active, don't queue a redraw (rely on Bangle.on(...) below)
