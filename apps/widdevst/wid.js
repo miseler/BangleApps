@@ -1,9 +1,9 @@
 (() => {
-  let stat = {date: 0};
-  let d = Date.now();
-  let settings = require("Storage").readJSON("widdevst.settings.json", 1)||{};
-  let borderMode = "borderMode" in settings ? settings.borderMode : 1;
-  let redrawBars = "redrawBars" in settings ? settings.redrawBars : false;
+  var stat = {date: 0};
+  var d = Date.now();
+  var settings = require("Storage").readJSON("widdevst.settings.json", 1)||{};
+  var borderMode = "borderMode" in settings ? settings.borderMode : 1;
+  var redrawBars = "redrawBars" in settings ? settings.redrawBars : false;
   delete settings;
 
   WIDGETS.devst = {area: "tr", width: 22, draw: function() {
@@ -21,7 +21,7 @@
     if (Bangle.isGPSOn() || toggleForce) g.drawString('G', x + 5, y + 12), again = true;
     if (Bangle.isHRMOn() || toggleForce) g.drawString('H', x + 13, y + 12), again = true;
 
-    if(borderMode==0 && false) { // RAM & storage bars
+    if(borderMode==0) { // RAM & storage bars
       let t;
       if ((d - stat.date) < 6e4) {
         t = process.memory(false);
@@ -37,7 +37,7 @@
       g.setColor(col(stat.sto)); g.drawRect(x + 2, y + 21, x + 2 + stat.sto * 18, y + 22);
       g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
     }
-    else if(borderMode==1 || true) { // battery gauge
+    else if(borderMode==1) { // battery gauge
       let b = E.getBattery(); b=80;
       let corner = 4;
       if(b <= 65) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
@@ -48,7 +48,8 @@
       let right = E.clip(b-50, 0, 25);
       let bottom = E.clip(b-25, 0, 25);
       let left = E.clip(b, 0, 25);
-      if(top>0) g.drawRect(x+1,y+0,x+1+20*top/25,y+1);
+      //if(top>0) g.drawRect(x+1,y+0,x+1+20*top/25,y+1);
+      if(top>0) g.drawRect(x+21-20*top/25,y+0,x+21,y+1);
       if(right>0) g.drawRect(x+20,y+0,x+21,y+22*right/25);
       if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
       if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
@@ -64,13 +65,13 @@
 
   function setColor(b) {
     if(Bangle.isCharging()) g.setColor('#00f');
-    else g.setColor(b > 50 ? '#0f0' : (b > 25 ? '#f80' : '#f00'));
+    else g.setColor(b > 50 ? '#0f0' : (b > 25 ? '#ff0' : '#f00'));
   }
 
-  let draw = WIDGETS.devst.draw.bind(WIDGETS.devst);
+  var draw = WIDGETS.devst.draw.bind(WIDGETS.devst);
 
-  let drawTime = () => Bangle.isLocked() ? 6e4 : 2e3;    // TODO: human readable?
-  let throttledDraw = () => Date.now() - d > drawTime() && draw();
+  var drawTime = () => Bangle.isLocked() ? 6e4 : 2e3;    // TODO: human readable?
+  var throttledDraw = () => Date.now() - d > drawTime() && draw();
 
   Bangle.on("HRM", throttledDraw);
   Bangle.on("GPS", throttledDraw);
