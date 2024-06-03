@@ -47,12 +47,11 @@
       if(b <= 55) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
       if(b <= 30) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
       if(b <=  5) {g.drawLine(x+corner, y+22, x+0, y+22);g.drawLine(x+0, y+22-corner, x+0, y+21);}
-      setColor(b);
+      //setColor(b);
       let top = E.clip(b-75, 0, 25);
       let right = E.clip(b-50, 0, 25);
       let bottom = E.clip(b-25, 0, 25);
       let left = E.clip(b, 0, 25);
-      //if(top>0) g.drawRect(x+21,y+0,x+1+20*top/25,y+1);
       if(top>0) g.drawRect(x+21-20*top/25,y+0,x+21,y+1);
       if(right>0) g.drawRect(x+20,y+22-22*right/25,x+21,y+22);
       if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
