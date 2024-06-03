@@ -29,11 +29,15 @@
     /*
     g.drawRect(x + 2, y + 1, x + 20, y + 21);
     /*/
-    b=100;
-    if(b>=75) g.drawRect(x+1,y+0,x+21,y+1);
-    if(b>=50) g.drawRect(x+20,y+0,x+21,y+22);
-    if(b>=25) g.drawRect(x+1,y+21,x+21,y+22);
-    g.drawRect(x+1,y+0,x+2,y+22);
+    //b=100;
+    var top = b-75; E.clip(top, 0, 25);
+    var right = b-50; E.clip(right, 0, 25);
+    var bottom = b-25; E.clip(bottom, 0, 25);
+    var left = b; E.clip(left, 0, 25);
+    if(top>0) g.drawRect(x+1,y+0,x+1+20*top/25,y+1);
+    if(right>0) g.drawRect(x+20,y+0,x+21,y+22*right/25);
+    if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
+    if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
     //*/
     // TODO: why rect and not line?
     g.setFont('6x8', 1);
