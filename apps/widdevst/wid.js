@@ -26,6 +26,15 @@
     g.reset();
     // Render inside the box this.x, this.y, this.x + this.width-1, this.y + 23
     g.clearRect(x, y, x + 21, y + 23);
+    g.setFont('6x8', 1);
+    var again = false;
+    var toggleForce = true;
+    if (NRF.getSecurityStatus().connected || toggleForce) g.drawString('B', x + 5, y + 3), again = true;
+    if (Bangle.isCompassOn() || toggleForce) g.drawString('C', x + 13, y + 3), again = true;
+    if (Bangle.isGPSOn() || toggleForce) g.drawString('G', x + 5, y + 12), again = true;
+    if (Bangle.isHRMOn() || toggleForce) g.drawString('H', x + 13, y + 12), again = true;
+
+    
     /*
     g.drawRect(x + 2, y + 1, x + 20, y + 21);
     /*/
@@ -40,14 +49,6 @@
     if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
     if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
     //*/
-    // TODO: why rect and not line?
-    g.setFont('6x8', 1);
-    var again = false;
-    var toggleForce = true;
-    if (NRF.getSecurityStatus().connected || toggleForce) g.drawString('B', x + 5, y + 3), again = true;
-    if (Bangle.isCompassOn() || toggleForce) g.drawString('C', x + 13, y + 3), again = true;
-    if (Bangle.isGPSOn() || toggleForce) g.drawString('G', x + 5, y + 12), again = true;
-    if (Bangle.isHRMOn() || toggleForce) g.drawString('H', x + 13, y + 12), again = true;
     //g.setColor(col(stat.sto)); g.drawRect(x + 2, y + 21, x + 2 + stat.sto * 18, y + 22);
     //g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
     // if there's nothing active, don't queue a redraw (rely on Bangle.on(...) below)
