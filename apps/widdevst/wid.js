@@ -30,10 +30,10 @@
     g.drawRect(x + 2, y + 1, x + 20, y + 21);
     /*/
     b=100;
-    if(b>=75) g.drawRect(x+2,y+1,x+20,y+1);
-    if(b>=50) g.drawRect(x+20,y+1,x+20,y+21);
-    if(b>=25) g.drawRect(x+2,y+21,x+20,y+21);
-    g.drawRect(x+2,y+1,x+2,y+21);
+    if(b>=75) g.drawRect(x+1,y+0,x+21,y+1);
+    if(b>=50) g.drawRect(x+20,y+0,x+21,y+22);
+    if(b>=25) g.drawRect(x+1,y+21,x+21,y+22);
+    g.drawRect(x+1,y+0,x+2,y+22);
     //*/
     // TODO: why rect and not line?
     g.setFont('6x8', 1);
