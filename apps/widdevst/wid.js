@@ -8,18 +8,6 @@
   WIDGETS.devst = {area: "tr", width: 22, draw: function() {
     d = Date.now();
     if (WIDGETS.devst._draw) return;
-    /*
-    let t;
-    if ((d - stat.date) < 6e4) {
-      t = process.memory(false);
-    } else {
-      stat.date = d;
-      t = require('Storage').getStats();
-      stat.sto = t.fileBytes / t.totalBytes;
-      t = process.memory();
-    }
-    t = t.usage / t.total;
-    */
     let x = this.x;
     let y = this.y;
     g.reset();
@@ -32,28 +20,39 @@
     if (Bangle.isGPSOn() || toggleForce) g.drawString('G', x + 5, y + 12), again = true;
     if (Bangle.isHRMOn() || toggleForce) g.drawString('H', x + 13, y + 12), again = true;
 
-    
-    /*
-    g.drawRect(x + 2, y + 1, x + 20, y + 21);
-    /*/
-    let b = E.getBattery();
-    let corner = 4;
-    if(b <= 65) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
-    if(b <= 40) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
-    if(b <= 15) {g.drawLine(x+corner, y+22, x+0, y+22);g.drawLine(x+0, y+22-corner, x+0, y+21);}
-    //b=100;
-    setColor(b);
-    let top = E.clip(b-75, 0, 25);
-    let right = E.clip(b-50, 0, 25);
-    let bottom = E.clip(b-25, 0, 25);
-    let left = E.clip(b, 0, 25);
-    if(top>0) g.drawRect(x+1,y+0,x+1+20*top/25,y+1);
-    if(right>0) g.drawRect(x+20,y+0,x+21,y+22*right/25);
-    if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
-    if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
-    //*/
-    //g.setColor(col(stat.sto)); g.drawRect(x + 2, y + 21, x + 2 + stat.sto * 18, y + 22);
-    //g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
+    if(mode==0) { // RAM & storage bars
+      let t;
+      if ((d - stat.date) < 6e4) {
+        t = process.memory(false);
+      } else {
+        stat.date = d;
+        t = require('Storage').getStats();
+        stat.sto = t.fileBytes / t.totalBytes;
+        t = process.memory();
+      }
+      t = t.usage / t.total;
+
+      g.drawRect(x + 2, y + 1, x + 20, y + 21);
+      g.setColor(col(stat.sto)); g.drawRect(x + 2, y + 21, x + 2 + stat.sto * 18, y + 22);
+      g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
+    }
+    else if(mode==1) { // battery gauge
+      let b = E.getBattery(); b=80;
+      let corner = 4;
+      if(b <= 65) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
+      if(b <= 40) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
+      if(b <= 15) {g.drawLine(x+corner, y+22, x+0, y+22);g.drawLine(x+0, y+22-corner, x+0, y+21);}
+      setColor(b);
+      let top = E.clip(b-75, 0, 25);
+      let right = E.clip(b-50, 0, 25);
+      let bottom = E.clip(b-25, 0, 25);
+      let left = E.clip(b, 0, 25);
+      if(top>0) g.drawRect(x+1,y+0,x+1+20*top/25,y+1);
+      if(right>0) g.drawRect(x+20,y+0,x+21,y+22*right/25);
+      if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
+      if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
+    }
+
     // if there's nothing active, don't queue a redraw (rely on Bangle.on(...) below)
     if (redrawBars || again) setTimeout(draw, drawTime());
   }};
