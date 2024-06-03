@@ -38,7 +38,7 @@
       g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
     }
     else if(borderMode==1) { // battery gauge
-      /*
+      //*
       let b = E.getBattery();
       /*/
       const b=40;
