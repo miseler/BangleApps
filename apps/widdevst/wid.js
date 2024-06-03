@@ -15,7 +15,7 @@
     g.clearRect(x, y, x + 21, y + 23);
     g.setFont('6x8', 1);
     let again = false;
-    let toggleForce = true;
+    let toggleForce = false;
     if (NRF.getSecurityStatus().connected || toggleForce) g.drawString('B', x + 5, y + 3), again = true;
     if (Bangle.isCompassOn() || toggleForce) g.drawString('C', x + 13, y + 3), again = true;
     if (Bangle.isGPSOn() || toggleForce) g.drawString('G', x + 5, y + 12), again = true;
