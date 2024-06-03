@@ -38,7 +38,11 @@
       g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
     }
     else if(borderMode==1) { // battery gauge
-      let b = E.getBattery(); b=80;
+      /*
+      let b = E.getBattery();
+      /*/
+      let b=80;
+      //*/
       let corner = 4;
       if(b <= 55) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
       if(b <= 30) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
