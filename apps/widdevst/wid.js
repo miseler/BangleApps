@@ -48,8 +48,8 @@
       let right = E.clip(b-50, 0, 25);
       let bottom = E.clip(b-25, 0, 25);
       let left = E.clip(b, 0, 25);
-      //if(top>0) g.drawRect(x+1,y+0,x+1+20*top/25,y+1);
-      if(top>0) g.drawRect(x+21-20*top/25,y+0,x+21,y+1);
+      if(top>0) g.drawRect(x+21,y+0,x+1+20*top/25,y+1);
+      //if(top>0) g.drawRect(x+21-20*top/25,y+0,x+21,y+1);
       if(right>0) g.drawRect(x+20,y+22,x+21,y+22*right/25);
       if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
       if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
