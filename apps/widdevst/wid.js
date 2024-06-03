@@ -41,7 +41,7 @@
       /*
       let b = E.getBattery();
       /*/
-      let b=80;
+      const b=80;
       //*/
       let corner = 4;
       if(b <= 55) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
