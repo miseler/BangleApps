@@ -13,13 +13,7 @@
       if (config.font == 0) {
         require("FontTeletext10x18Ascii").add(Graphics);
       } else if (config.font == 1) {
-        require("Font7x11Numeric7Seg").add(Graphics);
-        require("Font7x11Numeric7Seg").add(Graphics);
-        require("Font7x11Numeric7Seg").add(Graphics);
-        require("Font7x11Numeric7Seg").add(Graphics);
-        require("Font4x8Numeric").add(Graphics);
         require("Font5x9Numeric7Seg").add(Graphics);
-        require("FontHaxorNarrow7x17").add(Graphics)
       }
   }
   loadSettings();
@@ -88,9 +82,7 @@
       if (config.font == 0) {
         g.setFont("FontTeletext10x18Ascii");
       } else if (config.font == 1) {
-        g.setFont("7x11Numeric7Seg:2x2");
         g.setFont("5x9Numeric7Seg:2x2");
-        g.setFont("HaxorNarrow7x17");
       } else {
         // Default to this if no other font is set.
         g.setFont("6x8:1x2");
