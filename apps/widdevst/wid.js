@@ -20,7 +20,6 @@
     }
     t = t.usage / t.total;
     */
-    var b = E.getBattery();
     var x = this.x;
     var y = this.y;
     g.reset();
@@ -38,6 +37,9 @@
     /*
     g.drawRect(x + 2, y + 1, x + 20, y + 21);
     /*/
+    var b = E.getBattery();
+    var corner = 4;
+    if(b <= 65) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
     //b=100;
     setColor(b);
     var top = E.clip(b-75, 0, 25);
