@@ -30,6 +30,7 @@
     g.drawRect(x + 2, y + 1, x + 20, y + 21);
     /*/
     //b=100;
+    setColor(b);
     var top = E.clip(b-75, 0, 25);
     var right = E.clip(b-50, 0, 25);
     var bottom = E.clip(b-25, 0, 25);
@@ -57,7 +58,7 @@
     return p < 0.5 ? '#0f0' : (p < 0.8 ? '#f80' : '#f00');
   }
 
-  function color(b) {
+  function setColor(b) {
     if(Bangle.isCharging()) g.setColor('#00f');
     else g.setColor(b > 50 ? '#0f0' : (b > 25 ? '#f80' : '#f00'));
   }
