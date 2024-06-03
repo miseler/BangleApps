@@ -30,10 +30,10 @@
     g.drawRect(x + 2, y + 1, x + 20, y + 21);
     /*/
     //b=100;
-    var top = b-75; E.clip(top, 0, 25);
-    var right = b-50; E.clip(right, 0, 25);
-    var bottom = b-25; E.clip(bottom, 0, 25);
-    var left = b; E.clip(left, 0, 25);
+    var top = E.clip(b-75, 0, 25);
+    var right = E.clip(b-50, 0, 25);
+    var bottom = E.clip(b-25, 0, 25);
+    var left = E.clip(b, 0, 25);
     if(top>0) g.drawRect(x+1,y+0,x+1+20*top/25,y+1);
     if(right>0) g.drawRect(x+20,y+0,x+21,y+22*right/25);
     if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
