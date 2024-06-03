@@ -82,7 +82,7 @@
       if (config.font == 0) {
         g.setFont("FontTeletext10x18Ascii");
       } else if (config.font == 1) {
-        g.setFont("7x11Numeric7Seg:1x2");
+        g.setFont("7x11Numeric7Seg:2x2");
       } else {
         // Default to this if no other font is set.
         g.setFont("6x8:1x2");
