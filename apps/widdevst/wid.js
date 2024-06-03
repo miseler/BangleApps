@@ -57,6 +57,11 @@
     return p < 0.5 ? '#0f0' : (p < 0.8 ? '#f80' : '#f00');
   }
 
+  function color(b) {
+    if(Bangle.isCharging()) g.setColor('#00f');
+    else g.setColor(b > 50 ? '#0f0' : (b > 25 ? '#f80' : '#f00'));
+  }
+
   var draw = WIDGETS.devst.draw.bind(WIDGETS.devst);
 
   var drawTime = () => Bangle.isLocked() ? 6e4 : 2e3;    // TODO: human readable?
