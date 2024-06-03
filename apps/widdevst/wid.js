@@ -24,12 +24,16 @@
     var x = this.x;
     var y = this.y;
     g.reset();
+    // Render inside the box this.x, this.y, this.x + this.width-1, this.y + 23
     g.clearRect(x, y, x + 21, y + 23);
-    //g.drawRect(x + 2, y + 1, x + 20, y + 21);
+    //*
+    g.drawRect(x + 2, y + 1, x + 20, y + 21);
+    /*/
     if(b>=75) g.drawRect(x+2,y+1,x+20,y+2);
     if(b>=50) g.drawRect(x+19,y+1,x+20,y+21);
     if(b>=25) g.drawRect(x+2,y+20,x+20,y+21);
     g.drawRect(x+2,y+1,x+3,y+21);
+    //*/
     // TODO: why rect and not line?
     g.setFont('6x8', 1);
     var again = false;
