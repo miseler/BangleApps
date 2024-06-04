@@ -37,7 +37,7 @@
     }
   } // getNextAlarm
 
-  function drawTime(next=1, suppessSeconds=false) {
+  function drawTime(next, suppessSeconds) {
     const hours = Math.floor((next-1) / 3600000).toString();
     const minutes = Math.floor(((next-1) % 3600000) / 60000).toString();
     const seconds = Math.floor(((next-1) % 60000) / 1000).toString();
@@ -71,7 +71,7 @@
     g.drawString(text, this.x+1, this.y+12);
 
     return g.stringWidth(text) + 2; // One pixel on each side
-}
+  } // drawTime
 
   function draw(_w, fromInterval) {
     let alwaysOn = true;
@@ -94,7 +94,7 @@
     let drawSeconds = false;
 
     if (next > 0 && next <= config.maxhours*60*60*1000) {
-      calcWidth = drawTime(next);
+      calcWidth = drawTime(next, false);
       this.bellVisible = false;
     } else if (config.drawBell && this.numActiveAlarms > 0) {
       calcWidth = 24;
@@ -104,7 +104,7 @@
         this.bellVisible = true;
       }
     } else if (alwaysOn) {
-      calcWidth = drawTime();
+      calcWidth = drawTime(1, true);
       this.bellVisible = false;
     }
 
