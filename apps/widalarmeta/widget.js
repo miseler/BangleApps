@@ -144,7 +144,7 @@
       const x = xy.x;
       const y = xy.y;
     
-      if(w.x <= x && x < w.x + 22
+      if(w.x <= x && x < w.x + w.width
       && w.y <= y && y < w.y + 24)
       {
         E.stopEventPropagation && E.stopEventPropagation();
