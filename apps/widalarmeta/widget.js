@@ -162,4 +162,5 @@
         Bangle.setOptions({ backlightTimeout: 100 });
       }
     });
+  }
 })();
