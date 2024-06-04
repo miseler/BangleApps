@@ -44,11 +44,12 @@
     const minutes = Math.floor(((next-1) % 3600000) / 60000).toString();
     const seconds = Math.floor(((next-1) % 60000) / 1000).toString();
 
+    const w = WIDGETS.widalarmeta;
     g.reset(); // reset the graphics context to defaults (color/font/etc)
     g.setFontAlign(-1,0); // center font in y direction
-    g.clearRect(this.x, this.y, this.x+this.width-1, this.y+23);
+    g.clearRect(w.x, w.y, w.x+w.width-1, w.y+23);
 
-    var text = "00";
+    var text = "";
     if (config.padHours) {
       text += hours.padStart(2, '0');
     } else {
@@ -68,14 +69,7 @@
       // Default to this if no other font is set.
       g.setFont("6x8:1x2");
     }
-    g.drawString(text, this.x+1, this.y+12);
-    
-    const w = WIDGETS.widalarmeta;
-    //const x = xy.x;
-    //const y = xy.y;
     g.drawString(text, w.x+1, w.y+12);
-    
-
 
     return g.stringWidth(text) + 2; // One pixel on each side
   } // drawTime
@@ -152,7 +146,6 @@
     Bangle.on("alarmReload", () => WIDGETS["widalarmeta"].reload());
     Bangle.on('touch', (_btn, xy) => {
       const w = WIDGETS.widalarmeta;
-    
       const x = xy.x;
       const y = xy.y;
     
