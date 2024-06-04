@@ -37,12 +37,10 @@
     }
   } // getNextAlarm
 
-  function drawTime(next, suppessSeconds) {
+  function drawTime(next, drawSeconds) {
     const hours = Math.floor((next-1) / 3600000).toString();
     const minutes = Math.floor(((next-1) % 3600000) / 60000).toString();
     const seconds = Math.floor(((next-1) % 60000) / 1000).toString();
-    drawSeconds = (config.showSeconds & 0b01 && !Bangle.isLocked()) || (config.showSeconds & 0b10 && next <= 1000*60);
-    if(suppessSeconds) drawSeconds = false;
 
     g.reset(); // reset the graphics context to defaults (color/font/etc)
     g.setFontAlign(-1,0); // center font in y direction
@@ -91,10 +89,10 @@
     const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm);
 
     let calcWidth = 0;
-    let drawSeconds = false;
+    let drawSeconds = (config.showSeconds & 0b01 && !Bangle.isLocked()) || (config.showSeconds & 0b10 && next <= 1000*60);
 
     if (next > 0 && next <= config.maxhours*60*60*1000) {
-      calcWidth = drawTime(next, false);
+      calcWidth = drawTime(next, drawSeconds);
       this.bellVisible = false;
     } else if (config.drawBell && this.numActiveAlarms > 0) {
       calcWidth = 24;
@@ -104,7 +102,7 @@
         this.bellVisible = true;
       }
     } else if (alwaysOn) {
-      calcWidth = drawTime(1, true);
+      calcWidth = drawTime(1, false);
       this.bellVisible = false;
     }
 
