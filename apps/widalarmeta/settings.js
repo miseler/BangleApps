@@ -6,7 +6,9 @@
     drawBell: false,
     padHours: true,
     showSeconds: 0, // 0=never, 1=only when display is unlocked, 2=for less than a minute
-    font: 1, // 0=segment style font, 1=teletext font, 2=6x8:1x2
+    font: 1, // 0=segment style font, 1=teletext font, 2=6x8:1x2, 3=segment wide
+    alwaysOn: false,
+    shortcut: false,
   }, require("Storage").readJSON(CONFIGFILE,1) || {});
 
   function writeSettings() {
@@ -56,6 +58,20 @@
       format: v => [/*LANG*/"Segment", /*LANG*/"Teletext", /*LANG*/"6x8", /*LANG*/"Segment Wide"][v === undefined ? 1 : v],
       onchange: v => {
         settings.font = v;
+        writeSettings();
+      }
+    },
+    /*LANG*/'Always on': {
+      value: !!settings.alwaysOn,
+      onchange: v => {
+        settings.alwaysOn = v;
+        writeSettings();
+      }
+    },
+    /*LANG*/'Shortcut timer app': {
+      value: !!settings.shortcut,
+      onchange: v => {
+        settings.shortcut = v;
         writeSettings();
       }
     },
