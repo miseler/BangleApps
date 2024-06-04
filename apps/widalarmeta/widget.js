@@ -74,8 +74,6 @@
   } // drawTime
 
   function draw(_w, fromInterval) {
-    let alwaysOn = true;
-
     if (this.nextAlarm === undefined) {
       let alarm = getNextAlarm();
       if (alarm === undefined) {
@@ -96,6 +94,9 @@
     if (next > 0 && next <= config.maxhours*60*60*1000) {
       calcWidth = drawTime(next, drawSeconds);
       this.bellVisible = false;
+    } else if (config.alwaysOn) {
+      calcWidth = drawTime(1, false);
+      this.bellVisible = false;
     } else if (config.drawBell && this.numActiveAlarms > 0) {
       calcWidth = 24;
       // next alarm too far in future, draw only widalarm bell
@@ -103,9 +104,6 @@
         g.reset().drawImage(atob("GBgBAAAAAAAAABgADhhwDDwwGP8YGf+YMf+MM//MM//MA//AA//AA//AA//AA//AA//AB//gD//wD//wAAAAADwAABgAAAAAAAAA"),this.x,this.y);
         this.bellVisible = true;
       }
-    } else if (alwaysOn) {
-      calcWidth = drawTime(1, false);
-      this.bellVisible = false;
     }
 
     if (this.width !== calcWidth) {
