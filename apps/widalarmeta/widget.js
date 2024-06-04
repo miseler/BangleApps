@@ -37,13 +37,48 @@
     }
   } // getNextAlarm
 
-  function draw(_w, fromInterval) {
+  function drawTime(next=1, suppessSeconds=false) {
+    const hours = Math.floor((next-1) / 3600000).toString();
+    const minutes = Math.floor(((next-1) % 3600000) / 60000).toString();
+    const seconds = Math.floor(((next-1) % 60000) / 1000).toString();
+    drawSeconds = (config.showSeconds & 0b01 && !Bangle.isLocked()) || (config.showSeconds & 0b10 && next <= 1000*60);
+    if(suppessSeconds) drawSeconds = false;
 
+    g.reset(); // reset the graphics context to defaults (color/font/etc)
+    g.setFontAlign(-1,0); // center font in y direction
+    g.clearRect(this.x, this.y, this.x+this.width-1, this.y+23);
+
+    var text = "";
+    if (config.padHours) {
+      text += hours.padStart(2, '0');
+    } else {
+      text += hours;
+    }
+    text += ":" + minutes.padStart(2, '0');
+    if (drawSeconds) {
+      text += ":" + seconds.padStart(2, '0');
+    }
+    if (config.font == 0) {
+      g.setFont("5x9Numeric7Seg:1x2");
+    } else if (config.font == 1) {
+      g.setFont("Teletext5x9Ascii:1x2");
+    } else if (config.font == 3) {
+      g.setFont("5x9Numeric7Seg:2x2");
+    } else {
+      // Default to this if no other font is set.
+      g.setFont("6x8:1x2");
+    }
+    g.drawString(text, this.x+1, this.y+12);
+
+    return g.stringWidth(text) + 2; // One pixel on each side
+}
+
+  function draw(_w, fromInterval) {
     let alwaysOn = true;
 
     if (this.nextAlarm === undefined) {
       let alarm = getNextAlarm();
-      if (alarm === undefined && !alwaysOn) {
+      if (alarm === undefined) {
         // try again with next hour
         const nextHour = new Date();
         nextHour.setHours(nextHour.getHours()+1);
@@ -53,45 +88,13 @@
         this.nextAlarm = alarm;
       }
     }
-    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm) : alwaysOn;
+    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm);
 
     let calcWidth = 0;
     let drawSeconds = false;
 
     if (next > 0 && next <= config.maxhours*60*60*1000) {
-      const hours = Math.floor((next-1) / 3600000).toString();
-      const minutes = Math.floor(((next-1) % 3600000) / 60000).toString();
-      const seconds = Math.floor(((next-1) % 60000) / 1000).toString();
-      drawSeconds = (config.showSeconds & 0b01 && !Bangle.isLocked()) || (config.showSeconds & 0b10 && next <= 1000*60);
-      if(alwaysOn && next==1) drawSeconds = false;
-
-      g.reset(); // reset the graphics context to defaults (color/font/etc)
-      g.setFontAlign(-1,0); // center font in y direction
-      g.clearRect(this.x, this.y, this.x+this.width-1, this.y+23);
-
-      var text = "";
-      if (config.padHours) {
-        text += hours.padStart(2, '0');
-      } else {
-        text += hours;
-      }
-      text += ":" + minutes.padStart(2, '0');
-      if (drawSeconds) {
-        text += ":" + seconds.padStart(2, '0');
-      }
-      if (config.font == 0) {
-        g.setFont("5x9Numeric7Seg:1x2");
-      } else if (config.font == 1) {
-        g.setFont("Teletext5x9Ascii:1x2");
-      } else if (config.font == 3) {
-        g.setFont("5x9Numeric7Seg:2x2");
-      } else {
-        // Default to this if no other font is set.
-        g.setFont("6x8:1x2");
-      }
-      g.drawString(text, this.x+1, this.y+12);
-
-      calcWidth = g.stringWidth(text) + 2; // One pixel on each side
+      calcWidth = drawTime(next);
       this.bellVisible = false;
     } else if (config.drawBell && this.numActiveAlarms > 0) {
       calcWidth = 24;
@@ -100,6 +103,9 @@
         g.reset().drawImage(atob("GBgBAAAAAAAAABgADhhwDDwwGP8YGf+YMf+MM//MM//MA//AA//AA//AA//AA//AA//AB//gD//wD//wAAAAADwAABgAAAAAAAAA"),this.x,this.y);
         this.bellVisible = true;
       }
+    } else if (alwaysOn) {
+      calcWidth = drawTime();
+      this.bellVisible = false;
     }
 
     if (this.width !== calcWidth) {
@@ -114,7 +120,6 @@
     if (timeout === 0) {
       timeout += period;
     }
-    if(alwaysOn && next==1) timeout = 3600000;
 
     if (this.timeoutId !== undefined) {
       clearTimeout(this.timeoutId);
