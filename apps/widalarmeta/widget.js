@@ -138,5 +138,28 @@
     };
 
     Bangle.on("alarmReload", () => WIDGETS["widalarmeta"].reload());
-  }
+    Bangle.on('touch', (_btn, xy) => {
+      if (WIDGETS["back"]) return;
+    
+      const oversize = 5;
+    
+      const w = WIDGETS.widalarmeta;
+    
+      const x = xy.x;
+      const y = xy.y;
+    
+      if(w.x - oversize <= x && x < w.x + 14 + oversize
+      && w.y - oversize <= y && y < w.y + 24 + oversize)
+      {
+        E.stopEventPropagation && E.stopEventPropagation();
+    
+        Bangle.setLocked(true);
+    
+        const backlightTimeout = Bangle.getOptions().backlightTimeout; // ms
+    
+        // seems to be a race/if we don't give the firmware enough time,
+        // it won't timeout the backlight and we'll restore it in our setTimeout below
+        Bangle.setOptions({ backlightTimeout: 100 });
+      }
+    });
 })();
