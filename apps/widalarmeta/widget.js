@@ -144,17 +144,13 @@
       const x = xy.x;
       const y = xy.y;
     
-      if(w.x <= x && x < w.x + w.width
-      && w.y <= y && y < w.y + 24)
+      if(w.x <= x && x < w.x + w.width && w.y <= y && y < w.y + 24)
       {
         E.stopEventPropagation && E.stopEventPropagation();
     
-        let appId = 'multitimer';
-        let appInfo = require("Storage").readJSON(appId + '.info', false);
+        let appInfo = require("Storage").readJSON('multitimer.info', false);
         if (appInfo) {
           Bangle.buzz();
-          if (false) Bangle.load(appInfo.src);
-          else
           load(appInfo.src);
         }
       }
