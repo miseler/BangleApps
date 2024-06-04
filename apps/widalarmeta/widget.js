@@ -48,7 +48,7 @@
     g.setFontAlign(-1,0); // center font in y direction
     g.clearRect(this.x, this.y, this.x+this.width-1, this.y+23);
 
-    var text = "";
+    var text = "00";
     if (config.padHours) {
       text += hours.padStart(2, '0');
     } else {
