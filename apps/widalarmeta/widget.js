@@ -150,11 +150,11 @@
         E.stopEventPropagation && E.stopEventPropagation();
     
         let appId = 'multitimer';
-        let appInfo = storage.readJSON(appId + '.info', 1);
+        let appInfo = storage.readJSON(appId + '.info', false);
         if (appInfo) {
           Bangle.buzz();
-          //if (fast) Bangle.load(appInfo.src);
-          //else
+          if (true) Bangle.load(appInfo.src);
+          else
           load(appInfo.src);
         }
       }
