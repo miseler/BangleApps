@@ -86,7 +86,7 @@
         this.nextAlarm = alarm;
       }
     }
-    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm);
+    const next = this.nextAlarm !== undefined ? require("sched").getTimeToAlarm(this.nextAlarm) : 0;
 
     let calcWidth = 0;
     let drawSeconds = (config.showSeconds & 0b01 && !Bangle.isLocked()) || (config.showSeconds & 0b10 && next <= 1000*60);
