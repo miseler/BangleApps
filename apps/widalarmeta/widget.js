@@ -69,6 +69,13 @@
       g.setFont("6x8:1x2");
     }
     g.drawString(text, this.x+1, this.y+12);
+    
+    const w = WIDGETS.widalarmeta;
+    //const x = xy.x;
+    //const y = xy.y;
+    g.drawString(text, w.x+1, w.y+12);
+    
+
 
     return g.stringWidth(text) + 2; // One pixel on each side
   } // drawTime
