@@ -52,8 +52,8 @@
     },
     /*LANG*/'Font': {
       value: settings.font,
-      min: 0, max: 2,
-      format: v => [/*LANG*/"Segment", /*LANG*/"Teletext", /*LANG*/"6x8"][v === undefined ? 1 : v],
+      min: 0, max: 3,
+      format: v => [/*LANG*/"Segment", /*LANG*/"Teletext", /*LANG*/"6x8", /*LANG*/"Segment Wide"][v === undefined ? 1 : v],
       onchange: v => {
         settings.font = v;
         writeSettings();
