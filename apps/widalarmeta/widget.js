@@ -10,10 +10,10 @@
       font: 1, // 0=segment style font, 1=teletext font, 2=6x8:1x2
     }, require("Storage").readJSON("widalarmeta.json",1) || {});
 
-      if (config.font == 0) {
-        require("FontTeletext10x18Ascii").add(Graphics);
-      } else if (config.font == 1) {
+      if (config.font == 0 || config.font == 3) {
         require("Font5x9Numeric7Seg").add(Graphics);
+      } else if (config.font == 1) {
+        require("FontTeletext5x9Ascii").add(Graphics);
       }
   }
   loadSettings();
@@ -80,8 +80,10 @@
         text += ":" + seconds.padStart(2, '0');
       }
       if (config.font == 0) {
-        g.setFont("FontTeletext10x18Ascii");
+        g.setFont("5x9Numeric7Seg:1x2");
       } else if (config.font == 1) {
+        g.setFont("Teletext5x9Ascii:1x2");
+      } else if (config.font == 3) {
         g.setFont("5x9Numeric7Seg:2x2");
       } else {
         // Default to this if no other font is set.
