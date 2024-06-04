@@ -149,7 +149,14 @@
       {
         E.stopEventPropagation && E.stopEventPropagation();
     
-        Bangle.setLocked(true);
+        let appId = 'multitimer';
+        let appInfo = storage.readJSON(appId + '.info', 1);
+        if (appInfo) {
+          Bangle.buzz();
+          //if (fast) Bangle.load(appInfo.src);
+          //else
+          load(appInfo.src);
+        }
       }
     });
   }
