@@ -8,6 +8,8 @@
       padHours: true,
       showSeconds: 0, // 0=never, 1=only when display is unlocked, 2=for less than a minute
       font: 1, // 0=segment style font, 1=teletext font, 2=6x8:1x2, 3=segment wide
+      alwaysOn: false,
+      shortcut: false,
     }, require("Storage").readJSON("widalarmeta.json",1) || {});
 
       if (config.font == 0 || config.font == 3) {
