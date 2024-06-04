@@ -150,10 +150,10 @@
         E.stopEventPropagation && E.stopEventPropagation();
     
         let appId = 'multitimer';
-        let appInfo = storage.readJSON(appId + '.info', false);
+        let appInfo = require("Storage").readJSON(appId + '.info', false);
         if (appInfo) {
           Bangle.buzz();
-          if (true) Bangle.load(appInfo.src);
+          if (false) Bangle.load(appInfo.src);
           else
           load(appInfo.src);
         }
