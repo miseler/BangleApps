@@ -38,32 +38,11 @@
       g.setColor(col(t)); g.drawRect(x + 1, y + 21 - t * 20, x + 2, y + 21);
     }
     else if(borderMode==1) { // battery gauge
-      //*
       let b = E.getBattery();
-      /*/
-      const b=40;
-      //*/
-
-      /*
-      let corner = 4;
-      if(b <= 55) {g.drawLine(x+21-corner, y+0, x+21, y+0);g.drawLine(x+21, y+1, x+21, y+corner);}
-      if(b <= 30) {g.drawLine(x+21-corner, y+22, x+21, y+22);g.drawLine(x+21, y+22-corner, x+21, y+21);}
-      if(b <=  5) {g.drawLine(x+corner, y+22, x+0, y+22);g.drawLine(x+0, y+22-corner, x+0, y+21);}
-      //setColor(b);
-      let top = E.clip(b-75, 0, 25);
-      let right = E.clip(b-50, 0, 25);
-      let bottom = E.clip(b-25, 0, 25);
-      let left = E.clip(b, 0, 25);
-      if(top>0) g.drawRect(x+21-20*top/25,y+0,x+21,y+1);
-      if(right>0) g.drawRect(x+20,y+22-22*right/25,x+21,y+22);
-      if(bottom>0) g.drawRect(x+1,y+21,x+1+20*bottom/25,y+22);
-      if(left>0) g.drawRect(x+1,y+0,x+2,y+22*left/25);
-      /*/
-      let corner = 4;
+      const corner = 4;
       if(b <= 55) {g.drawLine(x+20-corner, y+0, x+20, y+0);g.drawLine(x+20, y+1, x+20, y+corner);}
       if(b <= 30) {g.drawLine(x+20-corner, y+22, x+20, y+22);g.drawLine(x+20, y+22-corner, x+20, y+21);}
       if(b <=  5) {g.drawLine(x+1+corner, y+22, x+1, y+22);g.drawLine(x+1, y+22-corner, x+1, y+21);}
-      //setColor(b);
       let top = E.clip(b-75, 0, 25);
       let right = E.clip(b-50, 0, 25);
       let bottom = E.clip(b-25, 0, 25);
@@ -72,7 +51,6 @@
       if(right>0) g.drawRect(x+20,y+22-21*right/25,x+20,y+22);
       if(bottom>0) g.drawRect(x+1,y+22,x+1+18*bottom/25,y+22);
       if(left>0) g.drawRect(x+1,y+0,x+1,y+21*left/25);
-      //*/
     }
 
     // if there's nothing active, don't queue a redraw (rely on Bangle.on(...) below)
@@ -83,14 +61,9 @@
     return p < 0.5 ? '#0f0' : (p < 0.8 ? '#f80' : '#f00');
   }
 
-  function setColor(b) {
-    if(Bangle.isCharging()) g.setColor('#00f');
-    else g.setColor(b > 50 ? '#0f0' : (b > 25 ? '#ff0' : '#f00'));
-  }
-
   var draw = WIDGETS.devst.draw.bind(WIDGETS.devst);
 
-  var drawTime = () => Bangle.isLocked() ? 6e4 : 2e3;    // TODO: human readable?
+  var drawTime = () => Bangle.isLocked() ? 6e4 : 2e3;    // TODO: human readable? 1764 & 739 o_O
   var throttledDraw = () => Date.now() - d > drawTime() && draw();
 
   Bangle.on("HRM", throttledDraw);
